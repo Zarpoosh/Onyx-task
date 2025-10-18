@@ -10,15 +10,17 @@ import Projects from './components/sections/projects/Projects';
 import Products from './components/sections/products/Products';
 import Footer from './components/footer/Footer';
 import ImageSlider from './components/ slider/InageSlider';
+import BackToTop from './components/BackToTop';
+// import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 const App: React.FC = () => {
-  // بررسی Local Storage برای حالت قبلی تم
   const [darkMode, setDarkMode] = useState(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode ? JSON.parse(savedMode) : true; // پیش‌فرض تاریک
   });
 
-  // اعمال کلاس body و ذخیره در Local Storage
+// save in local storage
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark-mode');
@@ -29,7 +31,7 @@ const App: React.FC = () => {
   }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode(prev => !prev);
+    setDarkMode((prev: boolean) => !prev);
   };
 
   return (
@@ -42,6 +44,7 @@ const App: React.FC = () => {
       <Projects />
       <Products />
       <Footer />
+      <BackToTop /> 
     </div>
   );
 };

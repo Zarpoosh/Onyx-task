@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -14,21 +13,37 @@ interface NavbarProps {
 
 const NavScrollExample: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null); 
 
   const handleToggle = () => {
     setMenuOpen(!menuOpen);
   };
 
+  //close the menue when click out of the menu
+  useEffect(() => {
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <Navbar
+    id='home'
       expand="lg"
       className={`sticky-top shadow-sm ${darkMode ? 'bg-dark navbar-dark' : 'bg-light navbar-light'}`}
+      ref={navRef} 
     >
       <Container fluid>
         <Navbar.Brand href="#">Onyx</Navbar.Brand>
 
         <div className="d-flex align-items-center ms-auto">
-          {/* دکمه دارک مود */}
           <Button
             variant={darkMode ? 'light' : 'dark'}
             onClick={toggleDarkMode}
@@ -37,16 +52,12 @@ const NavScrollExample: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) =
             {darkMode ? <FaSun /> : <FaMoon />}
           </Button>
 
-          {/* Toggle با آیکون شرطی */}
-          <Navbar.Toggle
-            aria-controls="navbarScroll"
-            onClick={handleToggle}
-          >
-            {menuOpen ? '×' : '☰'}
+          <Navbar.Toggle aria-controls="navbarScroll" onClick={handleToggle}>
+            {menuOpen ? <FaTimes /> : <FaBars />}
           </Navbar.Toggle>
         </div>
 
-        <Navbar.Collapse id="navbarScroll" onClick={() => setMenuOpen(false)}>
+        <Navbar.Collapse id="navbarScroll" in={menuOpen}>
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
@@ -57,12 +68,6 @@ const NavScrollExample: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) =
             <Nav.Link href="#projects">Projects</Nav.Link>
             <Nav.Link href="#services">Services</Nav.Link>
             <Nav.Link href="#products">Products</Nav.Link>
-            {/* <NavDropdown title="More" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#projects">Projects</NavDropdown.Item>
-              <NavDropdown.Item href="#services">Services</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#products">Products</NavDropdown.Item>
-            </NavDropdown> */}
           </Nav>
           <Form className="d-flex align-items-center">
             <Form.Control
@@ -71,7 +76,9 @@ const NavScrollExample: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) =
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-warning" className="me-2 btn-custom">Search</Button>
+            <Button variant="outline-warning" className="me-2 btn-custom">
+               Search
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>
