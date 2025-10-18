@@ -12,17 +12,17 @@ const Footer: React.FC = () => {
           <Col md={4}>
             <h5>Quick Links</h5>
             <ul className="list-unstyled">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li ><a className='text-warning' href="#home">Home</a></li>
+              <li ><a className='text-warning' href="#services">Services</a></li>
+              <li ><a className='text-warning' href="#contact">Contact</a></li>
             </ul>
           </Col>
           <Col md={4}>
             <h5>Connections</h5>
             <ul className="list-unstyled">
-              <li><a href="#email">email@onyxcompany.com</a></li>
-              <li><a href="#linkedin">linkedin.com/onyxcompany</a></li>
-              <li><a href="#facebook">facebook.com/onyxcompany</a></li>
+              <li ><a className='text-warning' href="#email">email@onyxcompany.com</a></li>
+              <li ><a className='text-warning' href="#linkedin">linkedin.com/onyxcompany</a></li>
+              <li ><a className='text-warning' href="#facebook">facebook.com/onyxcompany</a></li>
             </ul>
           </Col>
         </Row>

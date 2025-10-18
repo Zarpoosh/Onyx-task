@@ -8,7 +8,8 @@ const ImageSlider: React.FC = () => {
   const slides = [
     "https://images.pexels.com/photos/705190/coffee-cups-stacked-white-705190.jpeg",
     "https://biplans.ir/wp-content/uploads/2025/04/1-ceramic.webp",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTPn9uUYedje3eRLvYMHCaXMZlXVHJVgFYbYsc9fcnrHK5dAAGyGmTno-UXYvMha3mIFY&usqp=CAU"
+    "https://onyxcompany.ir/assets/top-2-mz1dh84G.jpeg",
+    "https://onyxcompany.ir/assets/moarefi02-CPLMm8M4.jpg"
   ];
 
   return (
@@ -29,7 +30,7 @@ const ImageSlider: React.FC = () => {
       <div className="carousel-fixed-text position-absolute top-50 start-50 translate-middle text-center text-white px-3">
         <h1>Petrochemical Raw Materials</h1>
         <p>More than 25 years of successful experience in the field of import, export and production.</p>
-        <Button variant="danger" href="#read-more">Read More</Button>
+        <Button variant="warning" className='warning' href="#read-more">Read More</Button>
       </div>
     </div>
   );

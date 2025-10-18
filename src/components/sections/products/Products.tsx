@@ -35,9 +35,10 @@ const Products: React.FC = () => {
     <section id="products" className="products-section py-5">
       <Container>
         <h2 className="text-center fw-bold  mb-4">Our Products</h2>
+        {/* <p>Onyx Industrial and Mining Group.</p> */}
         <Row className="g-4">
           {products.map((product, index) => (
-            <Col key={index} md={3} sm={6}>
+            <Col key={index} lg={3} sm={6}>
               <Card className="h-100 shadow-sm product-card">
                 <Card.Img
                   variant="top"
@@ -49,9 +50,9 @@ const Products: React.FC = () => {
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Text className="flex-grow-1">{product.description}</Card.Text>
                   <Button
-                    variant="danger"
+                    variant="warning"
                     href={product.link}
-                    className="mt-auto"
+                    className="mt-auto btn-custom"
                   >
                     Read More
                   </Button>

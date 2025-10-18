@@ -21,7 +21,7 @@ const About: React.FC = () => {
               provide high-quality services in the field of petrochemical raw
               materials and industrial products.
             </p>
-            <Button variant="danger" href="#learn-more">
+            <Button variant="warning" className="warning" href="#learn-more">
               Learn More
             </Button>
           </Col>

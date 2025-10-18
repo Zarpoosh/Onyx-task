@@ -14,12 +14,19 @@ import ImageSlider from './components/ slider/InageSlider';
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
 
+  
+
   const toggleDarkMode = () => {
-    setDarkMode(prev => {
-      document.body.className = !prev ? 'bg-dark text-light' : '';
-      return !prev;
-    });
-  };
+  setDarkMode(prev => {
+    if (!prev) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    return !prev;
+  });
+};
+
 
   return (
     <div className={darkMode ? 'bg-dark text-light' : 'bg-light text-dark'}>
