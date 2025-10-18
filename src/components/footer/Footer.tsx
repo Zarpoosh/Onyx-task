@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-dark text-light py-4">
+    <footer id='about' className="bg-dark text-light py-4">
       <Container>
         <Row>
           <Col md={4}>

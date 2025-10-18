@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/global.css';
 
 import NavScrollExample from './components/navbar/Navbar';
-import Hero from './components/sections/hero/Hero';
+// import Hero from './components/sections/hero/Hero';
 import About from './components/sections/about/About';
 import Services from './components/sections/services/Services';
 import Projects from './components/sections/projects/Projects';
@@ -25,7 +25,7 @@ const App: React.FC = () => {
     <div className={darkMode ? 'bg-dark text-light' : 'bg-light text-dark'}>
       <NavScrollExample darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <ImageSlider />
-      <Hero />
+      {/* <Hero /> */}
       <About />
       <Services />
       <Projects />
