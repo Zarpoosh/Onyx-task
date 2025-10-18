@@ -71,7 +71,7 @@ const NavScrollExample: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) =
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success" className="me-2">Search</Button>
+            <Button variant="outline-warning" className="me-2 btn-custom">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/global.css';
 
@@ -12,24 +12,28 @@ import Footer from './components/footer/Footer';
 import ImageSlider from './components/ slider/InageSlider';
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  // بررسی Local Storage برای حالت قبلی تم
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode ? JSON.parse(savedMode) : true; // پیش‌فرض تاریک
+  });
 
-  
-
-  const toggleDarkMode = () => {
-  setDarkMode(prev => {
-    if (!prev) {
+  // اعمال کلاس body و ذخیره در Local Storage
+  useEffect(() => {
+    if (darkMode) {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
-    return !prev;
-  });
-};
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  }, [darkMode]);
 
+  const toggleDarkMode = () => {
+    setDarkMode(prev => !prev);
+  };
 
   return (
-    <div className={darkMode ? 'bg-dark text-light' : 'bg-light text-dark'}>
+    <div className={darkMode ? 'text-light' : 'bg-light text-dark'}>
       <NavScrollExample darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <ImageSlider />
       {/* <Hero /> */}

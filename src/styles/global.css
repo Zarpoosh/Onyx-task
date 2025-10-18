@@ -38,7 +38,7 @@ body.bg-dark .form-control {
 }
 
 
-/* body.dark-mode {
+body.dark-mode {
   background-color: #000000; 
   color: #f5f5f5; 
 }
@@ -52,4 +52,4 @@ body.dark-mode .card {
 body.dark-mode .btn-custom {
   background-color: #ffcc00; 
   color: #222222; 
-} */
+}
